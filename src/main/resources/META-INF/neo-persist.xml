@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <!-- Configurações para o engine de persistência padrão do Fusion -->
+    <persistence-unit name="neomind" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <non-jta-data-source>java:/fusion</non-jta-data-source>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <validation-mode>AUTO</validation-mode>
+
+        <properties>
+            <!-- Anotação especifica para buscar entidades
+            <property name="hibernate.entity.package.scan" value="com.neomind.fusion.cliente.pacotedocliente"/>
+            -->
+
+            <!-- Microsoft SQL Server  
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value="123"/>
+            <property name="hibernate.connection.url"
+                value="jdbc:sqlserver://127.0.0.1:1433;databaseName=fusion;applicationName=fusion"/>
+            <property name="hibernate.connection.isolation" value="1"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
+            <property name="hibernate.ejb.naming_strategy" value="com.neomind.fusion.persist.schema.SafeNamingStrategy"/>
+             -->
+            <!-- Oracle
+            <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver" />
+            <property name="hibernate.connection.username" value="" />
+            <property name="hibernate.connection.password" value="" />
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.1.99:1521:ORCL" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+            <property name="hibernate.ejb.naming_strategy" value="com.neomind.fusion.persist.schema.OracleSafeNamingStrategy" />
+            <property name="hibernate.default_schema" value="FUSION" />
+            -->
+
+            <!--  PostgreSQL
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+            <property name="hibernate.connection.username" value="postgres" />
+            <property name="hibernate.connection.password" value="1234" />
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/fusion" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+            <property name="hibernate.ejb.naming_strategy" value="com.neomind.fusion.persist.schema.SafeNamingStrategy" />
+            <property name="hibernate.connection.autocommit" value="false"/>
+            <property name="hibernate.connection.isolation" value="1" />
+            -->
+
+            <!-- MySQL             -->
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.username" value="root" />
+            <property name="hibernate.connection.password" value="neo@123" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://192.168.1.27:3306/fusion_desenvolvimento" />
+            <property name="hibernate.connection.isolation" value="1" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.ejb.naming_strategy" value="com.neomind.fusion.persist.schema.MySQLSafeNamingStrategy" />
+            
+            
+
+
+            <!-- Informix
+            <property name="hibernate.connection.driver_class" value="com.informix.jdbc.IfxDriver" />
+            <property name="hibernate.connection.username" value="" />
+            <property name="hibernate.connection.password" value="" />
+            <property name="hibernate.connection.url" value="jdbc:informix-sqli://192.168.2.102:1064/fusion:INFORMIXSERVER=teste64soc;IFX_ISOLATION_LEVEL=1;IFX_LOCK_MODE_WAIT=3000;IFX_AUTOFREE=1;OPT_OFC=1;STMT_CACHE=1" />
+            <property name="hibernate.dialect" value="com.neomind.fusion.persist.hibernate.dialect.NeoInformixDialect" />
+            <property name="hibernate.ejb.naming_strategy" value="com.neomind.fusion.persist.schema.SafeNamingStrategy" />
+            -->
+
+            <!-- Configuração padrão do Fusion -->
+            <property name="hibernate.transaction.factory_class"
+                      value="org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory"/>
+            <property name="hibernate.bytecode.use_reflection_optimizer" value="true"/>
+            <property name="hibernate.max_fetch_depth" value="0"/>
+            <property name="hibernate.connection.pool_size" value="200"/>
+            <!-- https://docs.jboss.org/hibernate/orm/4.3/manual/en-US/html/ch15.html -->
+            <!--
+            <property name="hibernate.jdbc.batch_size" value="20" />
+            <property name="hibernate.order_inserts" value="true" />
+            <property name="hibernate.order_updates" value="true" />
+            <property name="hibernate.jdbc.batch_versioned_data" value="true" />
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.index.auto" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.validator.apply_to_ddl" value="false"/>
+            <property name="hibernate.validator.autoregister_listeners" value="false"/>
+
+            <!-- HikariCP como gerenciador do pool de conexões -->
+            <property name="hibernate.connection.provider_class"
+                      value="com.neomind.framework.base.FusionConnectionProvider"/>
+
+            <property name="hibernate.hikari.minimumIdle" value="5"/>
+            <property name="hibernate.hikari.maximumPoolSize" value="200"/>
+            <property name="hibernate.hikari.idleTimeout" value="400000"/>
+            <property name="hibernate.hikari.connectionTimeout" value="400000"/>
+            <!-- ERA FALSE -->
+            <property name="hibernate.hikari.isolateInternalQueries" value="true"/>
+            <property name="hibernate.hikari.leakDetectionThreshold" value="400000"/>
+            <property name="hibernate.hikari.poolName" value="Neomind"/>
+            <property name="hibernate.hikari.registerMbeans" value="true"/>
+
+
+            <property name="hibernate.hikari.connectionTestQuery" value="SELECT 1"/>
+            <!--<property name="hibernate.hikari.connectionTestQuery" value="SELECT 1 FROM DUAL"/>--><!--Oracle-->
+
+            <!-- Ambiente distribuído, a ser utilizado junto com o memcached como second level cache -->
+            <property name="hibernate.cache.fusion.standalone" value="true"/>
+
+            <!-- Cache -->
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+            <!--<property name="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE" />-->
+
+            <!-- Memcached
+            <property name="hibernate.cache.region.factory_class" value="com.googlecode.hibernate.memcached.MemcachedRegionFactory" />
+            <property name="hibernate.memcached.servers" value="neo-desenv:11211" />
+            <property name="hibernate.memcached.operationTimeout" value="3600"/>
+            <property name="hibernate.memcached.connectionFactory" value="KetamaConnectionFactory"/>
+            <property name="hibernate.memcached.hashAlgorithm" value="HashAlgorithm.FNV1_64_HASH"/>
+            -->
+            <!-- EHCache
+            <property name="hibernate.cache.region.factory_class" value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory" />
+            -->
+            <!-- Cache Entities -->
+            <!-- <property name="hibernate.ejb.classcache.com.neomind.fusion.engine.FusionSettings" value="nonstrict-read-write, FusionRegion" /> -->
+            <!-- <property name="hibernate.ejb.classcache.com.neomind.fusion.common.NeoObject" value="nonstrict-read-write, FusionRegion" /> -->
+
+            <!-- Fusion Storage Root Path -->
+            <property name="neomind.fusion.storage.root_path" value="c:/neomind/fusion/" />
+
+        </properties>
+    </persistence-unit>
+
+    <!-- Configurações para o engine de persistência das Fontes de Dados Externas -->
+    <persistence-unit name="externalTemplate" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.max_fetch_depth" value="2"/>
+            <property name="hibernate.connection.pool_size" value="200"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.cache.provider_class"
+                      value="org.hibernate.cache.internal.NoCachingRegionFactory"/>
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+            <property name="hibernate.bytecode.use_reflection_optimizer" value="true"/>
+            <property name="hibernate.archive.autodetection" value=""/>
+
+            <property name="hibernate.connection.provider_class"
+                      value="com.neomind.framework.base.FusionConnectionProvider"/>
+
+            <property name="hibernate.hikari.minimumIdle" value="5"/>
+            <property name="hibernate.hikari.maximumPoolSize" value="200"/>
+            <property name="hibernate.hikari.idleTimeout" value="400000"/>
+            <property name="hibernate.hikari.connectionTimeout" value="400000"/>
+            <property name="hibernate.hikari.isolateInternalQueries" value="false"/>
+            <property name="hibernate.hikari.leakDetectionThreshold" value="10000"/>
+            <property name="hibernate.hikari.poolName" value="NeomindExternal"/>
+            <property name="hibernate.hikari.registerMbeans" value="true"/>
+
+            <!-- Ambiente distribuído, a ser utilizado junto com o memcached como second level cache -->
+            <property name="hibernate.cache.fusion.standalone" value="true"/>
+
+        </properties>
+    </persistence-unit>
+
+</persistence>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tecnoperfil Pedido Industrial</title>
+
+<meta name="description" content="Resumo pedido Industrial TEcnoperfil">
+<meta name="author" content="LayoutIt!">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+
+</head>
+<body
+	style="font-size: 12px !important; padding-left: 12px !important; padding-right: 12px !important; size: a4; margin: 0; width: 210mm; height: 297mm; padding: 20mm; margin: 10mm auto;">
+
+	<div class="container-fluid">
+		<div class="row themed-grid-col">
+			<div class="col-6">
+				<img src="logo.png" class="img-responsive" />
+			</div>
+			<div class="col-6">
+				<p class="center font-weight-bold">{{tpproc}} DE VENDAS</p>
+				<table>
+					<tr>
+						<td>Nº</td>
+						<td class="font-weight-bold">{{nrPedido}}</td>
+					</tr>
+					<tr>
+						<td colspan="2">Tecnoperfil Plásticos Ltda CNPJ:
+							00.341.857/0001-75</td>
+					</tr>
+					<tr>
+						<td colspan="2">Rua Rui Barbosa, 210</td>
+					</tr>
+					<tr>
+						<td colspan="2">Zona Industrial Norte - Joinville - SC</td>
+					</tr>
+					<tr>
+						<td colspan="2">CEP: 89.219-520</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row client-data">
+
+			<div class="col-12">
+				<table class="table table-sm">
+					<tr>
+						<td>Cliente:</td>
+						<td colspan="3">{{clientName}}</td>
+						<td>Código:</td>
+						<td>{{clientCode}}</td>
+					</tr>
+					<tr>
+						<td>CNPJ/CPF:</td>
+						<td>{{clienteDOC}}</td>
+						<td colspan="2">I. Estadual:</td>
+						<td>{{clientIE}}</td>
+						<td>Suframa:</td>
+						<td>{{clientSuframa}}</td>
+					</tr>
+					<tr>
+						<td>Endereço:</td>
+						<td colspan="2">{{endereco}}</td>
+						<td>Nro:</td>
+						<td>{{enderecoNRO}}</td>
+						<td>Bairro:</td>
+						<td>{{enderecoBairro}}</td>
+					</tr>
+					<tr>
+						<td>Cidade:</td>
+						<td colspan="2">{{enderecoCidade}}</td>
+						<td>UF:</td>
+						<td>{{enderecoUF}}</td>
+						<td>CEP:</td>
+						<td>{{enderecoCEP}}</td>
+					</tr>
+					<tr>
+						<td>Telefone Fixo:</td>
+						<td colspan="2">{{clienteFixo}}</td>
+						<td>Celular:</td>
+						<td colspan="2">{{clienteCelular}}</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<div class="row delivery-data">
+
+			<div class="col-12"
+				style="border-top-style: solid; border-top-color: #292b2c; border-top-width: 3px;">
+				<table class="table table-sm" style="margin-top: 20px;">
+					<tr>
+						<td>Condição de Pgto:</td>
+						<td colspan="3">{{condpgto}}</td>
+						<td colspan="2">Nat. Operação:</td>
+						<td>{{natoperacao}}</td>
+					</tr>
+					<tr>
+						<td>Transportadora:</td>
+						<td colspan="7">{{transportadora}}</td>
+					</tr>
+					<tr>
+						<td>Local Entrega:</td>
+						<td colspan="7">{{localEntrega}}</td>
+					</tr>
+					<tr>
+						<td>Cidade:</td>
+						<td colspan="2">{{entregaCidade}}</td>
+						<td>UF:</td>
+						<td>{{entregaUF}}</td>
+						<td>Data Emissão:</td>
+						<td>{{dtEmissao}}</td>
+					</tr>
+					<tr>
+						<td>Frete:</td>
+						<td colspan="">{{tpFrete}}</td>
+						<td>Ordem:</td>
+						<td colspan="">{{ordemCompra}}</td>
+						<td colspan="2">Previsão de Embarque:</td>
+						<td>{{dtEmbarque}}</td>
+					</tr>
+					<tr>
+						<td>Representante:</td>
+						<td colspan="2">{{vendedor}}</td>
+						<td>Contato:</td>
+						<td colspan="">{{vendedorCelular}}</td>
+						<td>Email:</td>
+						<td>{{vendedorEmail}}</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<div class="col-12" style="padding-right: 0px; padding-left: 0px;">
+			<div class="col-md-12" style="padding-right: 0px; padding-left: 0px;">
+				<table class="table table-sm">
+					<thead style="border: solid 3px black">
+						<tr class="font-weight-bold">
+							<td>Código</td>
+							<td>Qtd</td>
+							<td>Uni</td>
+							<td colspan="2">Descrição</td>
+							<!-- <td>Observação</td> -->
+							<td>Valor</td>
+							<td colspan="2">IPI%</td>
+							<td>Total S/IPI</td>
+						</tr>
+					</thead>
+					<tbody>{{itemList}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row themed-grid-col">
+
+			<div class="col-md-12"
+				style="border-top-style: solid; border-top-color: #292b2c; border-top-width: 3px;">
+				<table class="table table-sm " style="margin-top: 20px;">
+					<thead class="justify-content-md-center">
+						<th>
+						<td colspan="3">SUJEITO A APROVAÇÃO EM CASO DE COTAÇÃO</td>
+						</th>
+					</thead>
+					<tr>
+						<td>Valor Total das Mercadorias</td>
+						<td>{{vlTotalMer}}</td>
+						<td>+</td>
+					</tr>
+					<tr>
+						<td>Valor do Frete</td>
+						<td>{{vlFrete}}</td>
+						<td>+</td>
+					</tr>
+					<tr>
+						<td>Valor IPI das Mercadorias</td>
+						<td>{{vlIpiMerc}}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Valor IPI sobre o Frete</td>
+						<td>{{vlIpiFrete}}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Valor Total IPI</td>
+						<td>{{vlTotalIPI}}</td>
+						<td>+</td>
+					</tr>
+					<tr>
+						<td>Substituição Tributária</td>
+						<td>{{vlST}}</td>
+						<td>+</td>
+					</tr>
+					<tr>
+						<td>Valor Total</td>
+						<td>{{vlTotal}}</td>
+						<td>=</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row obs">
+			<div class="col-md-12">
+				<b>Observação do pedido:</b>
+			</div>
+			<div class="col-md-12" style="border: solid 3px black;">
+				<b>{{obsPedido}}</b>
+			</div>
+		</div>
+		<br> <br>
+		<div class="row condicoes">
+			<h4 class="justify-content-md-center">Condições Gerais de Vendas</h4>
+			<div class="col-md-12">
+				Proposta válida por 10 dias. <br> Prazo de Embarque dos
+				produtos: 07 a 10 dias úteis após a aprovação deste orçamento.<br>
+				Para faturamento, o valor mínimo é de R$ 500,00 (boleto 28 dias -
+				Mediante Análise de Crédito).<br> Valor Mínimo para emissão de
+				Nota Fiscal: R$ 300,00 (à vista mediante depósito bancário).<br>
+				<br> Condição Pagamento: À Vista ou Antecipado abaixo contas
+				PIX:<br> BANCO ITAU<br> Chave:
+				contasapagar@tecnoperfil.com.br <br> BANCO DO BRASIL<br>
+				Chave: contasareceber@tecnoperfil.com.br <br> <br> Frete
+				CIF: Pedidos acima de R$ 2.000,00.<br> Região: NORDESTE = Frete
+				CIF (São Paulo).<br> Região: NORTE = Frete FOB.<br> <br>
+				<br>
+			</div>
+		</div>
+	</div>
+
+	<style>
+.itemDesc {
+	
+}
+</style>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+<script>
+	
+</script>
+</html>
